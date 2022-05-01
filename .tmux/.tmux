@@ -1,0 +1,1 @@
+/Users/krit/.dotfiles/.tmux

@@ -1,0 +1,11 @@
+theme: ayu
+icons:
+  diagnostic:
+    error: 
+    warn: 
+    info: 
+    hint: ﯧ
+  gitgutter:
+    added: ▌
+    modified: ▌
+    removed: ▸
