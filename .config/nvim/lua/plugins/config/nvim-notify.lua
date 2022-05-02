@@ -8,9 +8,9 @@ nvim_notify.setup({
 	timeout = 3000,
 	render = "default",
 	icons = {
-		ERROR = vim.g.config.icons.diagnostic.error,
-		WARN = vim.g.config.icons.diagnostic.warn,
-		INFO = vim.g.config.icons.diagnostic.info,
+		-- ERROR = vim.g.config.icons.diagnostic.error,
+		-- WARN = vim.g.config.icons.diagnostic.warn,
+		-- INFO = vim.g.config.icons.diagnostic.info,
 		DEBUG = "",
 		TRACE = "✎",
 	},

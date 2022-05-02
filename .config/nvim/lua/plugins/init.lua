@@ -74,19 +74,20 @@ require("packer").startup({
 		})
 
 		use({
-			"RRethy/nvim-treesitter-endwise",
+			"nvim-treesitter/playground",
 			after = "nvim-treesitter/nvim-treesitter",
 			requires = { "nvim-treesitter/nvim-treesitter" },
+		})
+
+		use({
+			"RRethy/nvim-treesitter-endwise",
+			after = { "nvim-treesitter/nvim-treesitter", "nvim-treesitter/playground" },
+			requires = { "nvim-treesitter/nvim-treesitter", "nvim-treesitter/playground" },
 		})
 
 		-- use({ "tpope/vim-endwise", event = "BufEnter" })
 
 		-- Identify Syntax Highlights
-		use({
-			"nvim-treesitter/playground",
-			after = "nvim-treesitter/nvim-treesitter",
-			requires = { "nvim-treesitter/nvim-treesitter" },
-		})
 
 		--Debugger
 		use({ "puremourning/vimspector", event = "VimEnter" })
@@ -95,7 +96,7 @@ require("packer").startup({
 		use({ "skywind3000/asyncrun.vim", event = "VimEnter" })
 
 		-- Http Requests
-		use({ "nicwest/vim-http", ft = "http" })
+		use({ "nicwest/vim-http", ft = "http", config = [[require("plugins.config.http")]] })
 
 		-- Startup Screen
 		use({
@@ -164,7 +165,7 @@ require("packer").startup({
 
 		-- File Fuzzy Finder
 		use({ "junegunn/fzf", run = ":call fzf#install()" })
-		use({ "junegunn/fzf.vim", event = "VimEnter" })
+		use({ "junegunn/fzf.vim", event = "VimEnter", config = [[require("plugins.config.fzf")]] })
 		use({ "airblade/vim-rooter", event = "VimEnter" })
 
 		-- Git
@@ -200,7 +201,7 @@ require("packer").startup({
 		end
 
 		-- Easy Text Surround
-		use({ "machakann/vim-sandwich", event = "BufEnter" })
+		use({ "machakann/vim-sandwich", event = "BufEnter", config = [[require("plugins.config.sandwich")]] })
 
 		-- Code Swapping Tool
 		use({ "machakann/vim-swap", event = "BufEnter" })
@@ -212,13 +213,18 @@ require("packer").startup({
 		-- use({ "svermeulen/vim-yoink", event = "VimEnter" })
 
 		-- Code Formatter
-		use({ "sbdchd/neoformat", cmd = "Neoformat", event = "VimEnter" })
+		use({
+			"sbdchd/neoformat",
+			cmd = "Neoformat",
+			event = "VimEnter",
+			config = [[require("plugins.config.neoformat")]],
+		})
 
 		-- Show and Strip Trailing Whitespaces
 		use({ "ntpeters/vim-better-whitespace", event = "VimEnter" })
 
 		-- Display Git Changes
-		use({ "airblade/vim-gitgutter", event = "BufEnter" })
+		use({ "airblade/vim-gitgutter", event = "BufEnter", config = [[require("plugins.config.gitgutter")]] })
 
 		if utils.executable("tmux") then
 			-- .tmux.conf Syntax Highlighting
@@ -245,7 +251,7 @@ require("packer").startup({
 		use({ "itchyny/vim-highlighturl", event = "VimEnter" })
 
 		-- Open URL in Browser
-		use({ "tyru/open-browser.vim", event = "VimEnter" })
+		use({ "tyru/open-browser.vim", event = "VimEnter", config = [[require("plugins.config.openbrowser")]] })
 
 		-- Display Hex Colors
 		use({

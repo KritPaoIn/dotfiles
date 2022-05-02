@@ -1,0 +1,6 @@
+require("globals")
+require("options")
+require("mappings")
+require("autocmd")
+require("plugins")
+require("appearance")
