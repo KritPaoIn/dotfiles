@@ -275,6 +275,7 @@ require("packer").startup({
 		-- Bad Habit Killer
 		-- use({ "dusans/vim-hardmode", event = "VimEnter" })
 
+		use({ "f-person/auto-dark-mode.nvim" })
 		-- Themes
 		use({ "Mofiqul/vscode.nvim", opt = true })
 		use({ "sainnhe/gruvbox-material", opt = true })

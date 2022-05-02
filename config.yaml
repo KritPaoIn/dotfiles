@@ -1,0 +1,13 @@
+nvim:
+  theme: ayu
+  dynamic-darkmode: on
+  icons:
+    diagnostic:
+      error: 
+      warn: 
+      info: 
+      hint: ﯧ
+    gitgutter:
+      added: ▌
+      modified: ▌
+      removed: ▸

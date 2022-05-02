@@ -2,7 +2,6 @@ set fish_greeting ""
 starship init fish | source
 set -gx TERM xterm-256color
 
-
 # aliases
 alias ls "ls -p -G"
 alias la "ls -A"

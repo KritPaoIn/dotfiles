@@ -11,8 +11,8 @@ xnoremap ; :
 nnoremap q; q:
 
 " Resource Vimrc
-nnoremap <silent> <leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>
-nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
+nnoremap <silent> <Leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>
+nnoremap <silent> <Leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
       \ call v:lua.vim.notify("Nvim config successfully reloaded!", 'info', {'title': 'nvim-config'})<cr>
 
 " Navigate Through Physical Lines

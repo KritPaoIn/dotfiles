@@ -14,7 +14,7 @@ lua << EOF
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'ayu',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -44,65 +44,71 @@ EOF
 
 packadd ayu-vim
 
-colorscheme ayu
-
-" function! ChangeBackground()
-  " if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
-  "   let g:ayucolor = "dark"
-  " else
-  "   let g:ayucolor = "light"
-  " endif
-" endfunction
-
-" call ChangeBackground()
-
 nnoremap <S-H> <Cmd>BufferPrevious<CR>
 nnoremap <S-L> <Cmd>BufferNext<CR>
 nnoremap <C-c> <Cmd>BufferClose<CR>
 
-highlight! link BufferCurrent Normal
-highlight! link BufferCurrentTarget Normal
-highlight! link BufferCurrentSign Normal
+if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+  let g:ayucolor = "dark"
+else
+  let g:ayucolor = "light"
+endif
+colorscheme ayu
+lua << EOF
+local auto_dark_mode = require("auto-dark-mode")
 
-highlight! BufferVisible guifg=Gray guibg=NONE
-highlight! link BufferVisibleTarget BufferVisible
-" highlight! link BufferVisibleSign guibg=NONE guifg=
-exec 'hi BufferVisibleSign guibg=NONE ' . 'guifg=' . synIDattr(hlID('Normal'),'bg')
+auto_dark_mode.setup({
+	update_interval = 1000,
+	set_dark_mode = function()
+    vim.g.ayucolor = "dark"
+		vim.cmd("colorscheme ayu")
+    vim.cmd("call ExtraHighlight()")
+	end,
+	set_light_mode = function()
+    vim.g.ayucolor = "light"
+		vim.cmd("colorscheme ayu")
+    vim.cmd("call ExtraHighlight()")
+	end,
+})
+auto_dark_mode.init()
+EOF
 
-highlight! link BufferCurrentMod BufferCurrent
-highlight! link BufferInactiveMod BufferInactive
-highlight! link BufferVisibleMod BufferVisible
-
-highlight GitGutterAdd    guifg=#4d7e00 ctermfg=2
-highlight GitGutterChange guifg=#007fa1 ctermfg=3
-highlight GitGutterDelete guifg=#a20011 ctermfg=1
-
-highlight! link SignColumn LineNr
-highlight! link LspSagaDiagnosticBorder Normal
-highlight! link LspSagaCodeActionBorder Normal
-highlight! link LspSagaFloatWinBorder Normal
-highlight! link LspSagaRenameBorder Normal
-highlight! link LspSagaSignatureHelpBorder Normal
-highlight! link LspSagaDiagBorder Normal
-highlight! link LspSagaDefPreviewBorder Normal
-
-highlight! link LspSagaDiagnosticTruncateLine Normal
-highlight! link LspSagaCodeActionTruncateLine Normal
-highlight! link LspSagaFloatWinTruncateLine Normal
-highlight! link LspSagaRenameTruncateLine Normal
-highlight! link LspSagaSignatureHelpTruncateLine Normal
-highlight! link LspSagaDiagTruncateLine Normal
-highlight! link LspSagaDefPreviewTruncateLine Normal
-
-" highlight DiagnosticError guifg=#E51300
-" highlight DiagnosticWarn guifg=#A58A00
-" highlight DiagnosticInfo guifg=#007BD3
-" highlight DiagnosticHint guifg=#007BD3
-
-highlight Normal ctermbg=NONE guibg=NONE
-highlight! link NvimTreeFolderName Normal
-highlight! link NvimTreeOpenedFolderName Normal
-
-highlight! link TSParameter TSConstant
-
-exec 'hi EndOfBuffer guibg=NONE ' . 'guifg=' . synIDattr(hlID('SignColumn'),'bg')
+function ExtraHighlight()
+  highlight! link BufferCurrent Normal
+  highlight! link BufferCurrentTarget Normal
+  highlight! link BufferCurrentSign Normal
+  highlight! BufferVisible guifg=Gray guibg=NONE
+  highlight! link BufferVisibleTarget BufferVisible
+  exec 'hi BufferVisibleSign guibg=NONE ' . 'guifg=' . synIDattr(hlID('Normal'),'bg')
+  highlight! link BufferCurrentMod BufferCurrent
+  highlight! link BufferInactiveMod BufferInactive
+  highlight! link BufferVisibleMod BufferVisible
+  highlight GitGutterAdd    guifg=#4d7e00 ctermfg=2
+  highlight GitGutterChange guifg=#007fa1 ctermfg=3
+  highlight GitGutterDelete guifg=#a20011 ctermfg=1
+  highlight! link SignColumn LineNr
+  highlight! link LspSagaDiagnosticBorder Normal
+  highlight! link LspSagaCodeActionBorder Normal
+  highlight! link LspSagaFloatWinBorder Normal
+  highlight! link LspSagaRenameBorder Normal
+  highlight! link LspSagaSignatureHelpBorder Normal
+  highlight! link LspSagaDiagBorder Normal
+  highlight! link LspSagaDefPreviewBorder Normal
+  highlight! link LspSagaDiagnosticTruncateLine Normal
+  highlight! link LspSagaCodeActionTruncateLine Normal
+  highlight! link LspSagaFloatWinTruncateLine Normal
+  highlight! link LspSagaRenameTruncateLine Normal
+  highlight! link LspSagaSignatureHelpTruncateLine Normal
+  highlight! link LspSagaDiagTruncateLine Normal
+  highlight! link LspSagaDefPreviewTruncateLine Normal
+  " highlight DiagnosticError guifg=#E51300
+  " highlight DiagnosticWarn guifg=#A58A00
+  " highlight DiagnosticInfo guifg=#007BD3
+  " highlight DiagnosticHint guifg=#007BD3
+  highlight Normal ctermbg=NONE guibg=NONE
+  highlight! link NvimTreeFolderName Normal
+  highlight! link NvimTreeOpenedFolderName Normal
+  highlight! link TSParameter TSConstant
+  exec 'hi EndOfBuffer guibg=NONE ' . 'guifg=' . synIDattr(hlID('SignColumn'),'bg')
+  highlight! link TSInclude TSKeyword
+endfunction
