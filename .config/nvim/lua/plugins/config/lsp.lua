@@ -16,6 +16,7 @@ local attachment = function(client, bufnr)
 	local map = vim.api.nvim_buf_set_keymap
 
 	map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	map(bufnr, "n", "gp", "<Cmd>Lspsaga preview_definition<CR>", opts)
 	map(bufnr, "n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
 	map(bufnr, "n", "gx", "<Cmd>Lspsaga code_action<CR>", opts)
 	map(bufnr, "n", "gh", "<Cmd>Lspsaga lsp_finder<CR>", opts)

@@ -70,15 +70,13 @@ require("packer").startup({
 		-- Improved Syntax Highlighting
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			event = "BufEnter",
 			config = [[require("plugins.config.treesitter")]],
 		})
 
 		use({
 			"RRethy/nvim-treesitter-endwise",
-			event = "BufEnter",
-            requires = { "nvim-treesitter" },
-            after = {"nvim-treesitter"},
+			after = "nvim-treesitter/nvim-treesitter",
+			requires = { "nvim-treesitter/nvim-treesitter" },
 		})
 
 		-- use({ "tpope/vim-endwise", event = "BufEnter" })
@@ -86,8 +84,8 @@ require("packer").startup({
 		-- Identify Syntax Highlights
 		use({
 			"nvim-treesitter/playground",
-			event = "BufEnter",
-			requires = { "nvim-treesitter" },
+			after = "nvim-treesitter/nvim-treesitter",
+			requires = { "nvim-treesitter/nvim-treesitter" },
 		})
 
 		--Debugger
@@ -187,6 +185,8 @@ require("packer").startup({
 			config = [[require("plugins.config.nvim-autopairs")]],
 		})
 
+		-- use({ "luochen1990/rainbow" })
+
 		-- use({ "Raimondi/delimitMate", event = "BufEnter" })
 
 		if vim.g.is_win or vim.g.is_mac then
@@ -268,9 +268,9 @@ require("packer").startup({
 			config = [[require("plugins.config.indent")]],
 		})
 
-        -- use({
-        --     "ianding1/leetcode.vim",
-        -- })
+		-- use({
+		--     "ianding1/leetcode.vim",
+		-- })
 
 		-- Bad Habit Killer
 		-- use({ "dusans/vim-hardmode", event = "VimEnter" })

@@ -69,3 +69,5 @@ nnoremap <Leader>c <Cmd>:%!column -t<CR>
 
 nnoremap <S-CR> o<Esc>
 inoremap <S-CR> <Esc>o
+
+nnoremap <Leader>hl <Cmd>TSHighlightCapturesUnderCursor<CR>

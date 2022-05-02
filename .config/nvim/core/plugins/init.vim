@@ -12,6 +12,7 @@ let s:plugin_configs = [
   \ 'http',
   \ 'commentary',
   \ 'leetcode',
+  \ 'rainbow',
   \ ]
 
 for s:config in s:plugin_configs

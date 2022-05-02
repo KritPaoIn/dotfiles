@@ -100,7 +100,9 @@ highlight! link LspSagaDefPreviewTruncateLine Normal
 " highlight DiagnosticHint guifg=#007BD3
 
 highlight Normal ctermbg=NONE guibg=NONE
-highlight link NvimTreeFolderName Normal
-highlight link NvimTreeOpenedFolderName Normal
+highlight! link NvimTreeFolderName Normal
+highlight! link NvimTreeOpenedFolderName Normal
+
+highlight! link TSParameter TSConstant
 
 exec 'hi EndOfBuffer guibg=NONE ' . 'guifg=' . synIDattr(hlID('SignColumn'),'bg')
