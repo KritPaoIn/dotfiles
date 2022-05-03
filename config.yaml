@@ -1,5 +1,8 @@
 nvim:
   theme: ayu
+  bufferline: on
+  statusline: on
+  gitgutter: on
   dynamic-darkmode: on
   icons:
     diagnostic:

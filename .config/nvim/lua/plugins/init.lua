@@ -224,7 +224,7 @@ require("packer").startup({
 		use({ "ntpeters/vim-better-whitespace", event = "VimEnter" })
 
 		-- Display Git Changes
-		use({ "airblade/vim-gitgutter", event = "BufEnter", config = [[require("plugins.config.gitgutter")]] })
+		use({ "airblade/vim-gitgutter", opt = true })
 
 		if utils.executable("tmux") then
 			-- .tmux.conf Syntax Highlighting

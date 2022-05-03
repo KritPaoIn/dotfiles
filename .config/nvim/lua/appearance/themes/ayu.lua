@@ -12,9 +12,6 @@ exec 'hi BufferVisibleSign guibg=NONE ' . 'guifg=' . synIDattr(hlID('Normal'),'b
 highlight! link BufferCurrentMod BufferCurrent
 highlight! link BufferInactiveMod BufferInactive
 highlight! link BufferVisibleMod BufferVisible
-highlight GitGutterAdd    guifg=#4d7e00 ctermfg=2
-highlight GitGutterChange guifg=#007fa1 ctermfg=3
-highlight GitGutterDelete guifg=#a20011 ctermfg=1
 highlight! link SignColumn LineNr
 highlight! link LspSagaDiagnosticBorder Normal
 highlight! link LspSagaCodeActionBorder Normal
@@ -40,6 +37,9 @@ highlight! link NvimTreeOpenedFolderName Normal
 highlight! link TSParameter TSConstant
 exec 'hi EndOfBuffer guibg=NONE ' . 'guifg=' . synIDattr(hlID('SignColumn'),'bg')
 highlight! link TSInclude TSKeyword
+highlight GitGutterAdd    guifg=#4d7e00 ctermfg=2
+highlight GitGutterChange guifg=#007fa1 ctermfg=3
+highlight GitGutterDelete guifg=#a20011 ctermfg=1
 ]]
 
 function m.theme()
@@ -53,7 +53,46 @@ function m.theme()
 		set_dark_mode = function()
 			vim.g.ayucolor = "dark"
 			vim.cmd("colorscheme ayu")
-			vim.cmd(extra_highlights)
+			vim.cmd([[
+                highlight! link BufferCurrent Normal
+                highlight! link BufferCurrentTarget Normal
+                highlight! link BufferCurrentSign Normal
+                highlight! BufferVisible guifg=Gray guibg=NONE
+                highlight! link BufferVisibleTarget BufferVisible
+                exec 'hi BufferVisibleSign guibg=NONE ' . 'guifg=' . synIDattr(hlID('Normal'),'bg')
+                highlight! link BufferCurrentMod BufferCurrent
+                highlight! link BufferInactiveMod BufferInactive
+                highlight! link BufferVisibleMod BufferVisible
+                highlight! link SignColumn LineNr
+                highlight! link LspSagaDiagnosticBorder Normal
+                highlight! link LspSagaCodeActionBorder Normal
+                highlight! link LspSagaFloatWinBorder Normal
+                highlight! link LspSagaRenameBorder Normal
+                highlight! link LspSagaSignatureHelpBorder Normal
+                highlight! link LspSagaDiagBorder Normal
+                highlight! link LspSagaDefPreviewBorder Normal
+                highlight! link LspSagaDiagnosticTruncateLine Normal
+                highlight! link LspSagaCodeActionTruncateLine Normal
+                highlight! link LspSagaFloatWinTruncateLine Normal
+                highlight! link LspSagaRenameTruncateLine Normal
+                highlight! link LspSagaSignatureHelpTruncateLine Normal
+                highlight! link LspSagaDiagTruncateLine Normal
+                highlight! link LspSagaDefPreviewTruncateLine Normal
+                " highlight DiagnosticError guifg=#E51300
+                " highlight DiagnosticWarn guifg=#A58A00
+                " highlight DiagnosticInfo guifg=#007BD3
+                " highlight DiagnosticHint guifg=#007BD3
+                highlight Normal ctermbg=NONE guibg=NONE
+                highlight! link NvimTreeFolderName Normal
+                highlight! link NvimTreeOpenedFolderName Normal
+                highlight! link TSParameter TSConstant
+                exec 'hi EndOfBuffer guibg=NONE ' . 'guifg=' . synIDattr(hlID('SignColumn'),'bg')
+                highlight! link TSInclude TSKeyword
+
+                highlight GitGutterAdd    guifg=#4d7e00 ctermfg=2
+                highlight GitGutterChange guifg=#007fa1 ctermfg=3
+                highlight GitGutterDelete guifg=#a20011 ctermfg=1
+            ]])
 		end,
 		set_light_mode = function()
 			vim.g.ayucolor = "light"
@@ -105,6 +144,15 @@ function m.statusline()
 		tabline = {},
 		extensions = {},
 	})
+end
+
+function m.gitgutter()
+	vim.g.gitgutter_sign_added = vim.g.config.icons.gitgutter.added
+	vim.g.gitgutter_sign_modified = vim.g.config.icons.gitgutter.modified
+	vim.g.gitgutter_sign_removed = vim.g.config.icons.gitgutter.removed
+	vim.g.gitgutter_sign_removed_first_line = vim.g.config.icons.gitgutter.removed
+	vim.g.gitgutter_sign_removed_above_and_below = vim.g.config.icons.gitgutter.removed
+	vim.g.gitgutter_sign_modified_removed = vim.g.config.icons.gitgutter.modified
 end
 
 return m

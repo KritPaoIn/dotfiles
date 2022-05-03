@@ -9,7 +9,7 @@ set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for autoindent
 set expandtab       " expand tab to spaces so that tabs are spaces
 
-set cinoptions+=g0
+" set cinoptions+=g0
 
 nnoremap <silent> <buffer> <F7> :call <SID>compile_run_cpp()<CR>
 
