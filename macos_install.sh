@@ -1,13 +1,15 @@
 #!/bin/bash
-
 ## Symlink
 if [ ! -z $HOME ]; then
-    mkdir -p $HOME/.config/
-    ln -sF $HOME/.dotfiles/.config/nvim $HOME/.config
-    ln -sF $HOME/.dotfiles/.config/fish $HOME/.config
-    ln -sF $HOME/.dotfiles/.tmux.conf $HOME
-    ln -sF $HOME/.dotfiles/.tmux $HOME
-    ln -sF $HOME/.dotfiles/.gitconfig $HOME
+    if [ -z $DOTFILES ]; then
+        export DOTFILES=$HOME/.dotfiles
+    fi
+    mkdir -p $DOTFILES/.config/
+    ln -sF $DOTFILES/.config/nvim $HOME/.config
+    ln -sF $DOTFILES/.config/fish $HOME/.config
+    ln -sF $DOTFILES/.tmux.conf $HOME
+    ln -sF $DOTFILES/.tmux $HOME
+    ln -sF $DOTFILES/.gitconfig $HOME
 fi
 
 ## Dependencies

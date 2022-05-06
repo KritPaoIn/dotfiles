@@ -1,5 +1,9 @@
-nvim:
+iterm2:
   theme: ayu
+tmux:
+  theme: inherit
+nvim:
+  theme: inherit
   bufferline: on
   statusline: on
   gitgutter: on

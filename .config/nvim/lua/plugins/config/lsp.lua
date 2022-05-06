@@ -217,12 +217,12 @@ vim.fn.sign_define("DiagnosticSignHint", {
 })
 
 -- global config for diagnostic
--- vim.diagnostic.config({
--- 	underline = false,
--- 	virtual_text = false,
--- 	signs = true,
--- 	severity_sort = true,
--- })
+vim.diagnostic.config({
+	underline = false,
+	virtual_text = false,
+	signs = true,
+	severity_sort = true,
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	virtual_text = {

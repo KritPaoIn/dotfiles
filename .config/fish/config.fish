@@ -2,6 +2,8 @@ set fish_greeting ""
 starship init fish | source
 set -gx TERM xterm-256color
 
+set -gx DOTFILES $HOME/.dotfiles
+
 # aliases
 alias ls "ls -p -G"
 alias la "ls -A"

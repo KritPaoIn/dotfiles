@@ -75,14 +75,13 @@ require("packer").startup({
 
 		use({
 			"nvim-treesitter/playground",
-			after = "nvim-treesitter/nvim-treesitter",
-			requires = { "nvim-treesitter/nvim-treesitter" },
+			after = "nvim-treesitter",
 		})
 
 		use({
 			"RRethy/nvim-treesitter-endwise",
-			after = { "nvim-treesitter/nvim-treesitter", "nvim-treesitter/playground" },
-			requires = { "nvim-treesitter/nvim-treesitter", "nvim-treesitter/playground" },
+			after = { "nvim-treesitter" },
+			requires = { "nvim-treesitter" },
 		})
 
 		-- use({ "tpope/vim-endwise", event = "BufEnter" })
@@ -201,7 +200,11 @@ require("packer").startup({
 		end
 
 		-- Easy Text Surround
-		use({ "machakann/vim-sandwich", event = "BufEnter", config = [[require("plugins.config.sandwich")]] })
+		use({
+			"machakann/vim-sandwich",
+			event = "BufEnter",
+			config = [[require("plugins.config.sandwich")]],
+		})
 
 		-- Code Swapping Tool
 		use({ "machakann/vim-swap", event = "BufEnter" })
