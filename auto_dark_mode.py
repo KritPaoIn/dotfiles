@@ -6,13 +6,13 @@ iTerm2 Dynamic Dark Mode
 
 import iterm2
 
+theme_dark = "ayu Dark"
+theme_light = "ayu Light"
 
 async def change_theme(connection, parts):
     """
     Change Theme
     """
-    theme_dark = "ayu Dark"
-    theme_light = "ayu Light"
 
     if "dark" in parts:
         preset = await iterm2.ColorPreset.async_get(connection, theme_dark)
