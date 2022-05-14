@@ -56,6 +56,9 @@ alias luamake /Users/krit/tools/lua-language-server/3rd/luamake/luamake
 # C
 set -gx PATH /Applications/CMake.app/Contents/bin $PATH
 
+# Csharp
+set -gx PATH $HOME/.dotnet/tools $PATH
+
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
     status --is-command-substitution; and return

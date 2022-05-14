@@ -41,6 +41,8 @@ require("packer").startup({
 		use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 		use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 
+        use({ "OmniSharp/omnisharp-vim" })
+
 		-- LSP Configuration
 		use({
 			"ms-jpq/coq_nvim",
@@ -224,7 +226,7 @@ require("packer").startup({
 		})
 
 		-- Show and Strip Trailing Whitespaces
-		use({ "ntpeters/vim-better-whitespace", event = "VimEnter" })
+		-- use({ "ntpeters/vim-better-whitespace", event = "BufEnter" })
 
 		-- Display Git Changes
 		use({ "airblade/vim-gitgutter", opt = true })

@@ -1,17 +1,17 @@
 local wilder = require("wilder")
 wilder.setup({ modes = { ":" } })
 
--- wilder.set_option("pipeline", {
--- 	wilder.branch(
--- 		wilder.python_file_finder_pipeline({
--- 			file_command = { "fd", "-tf" },
--- 			dir_command = { "fd", "-td" },
--- 			filters = { "fuzzy_filter", "difflib_sorter" },
--- 		}),
--- 		wilder.cmdline_pipeline(),
--- 		wilder.python_search_pipeline()
--- 	),
--- })
+wilder.set_option("pipeline", {
+	wilder.branch(
+		wilder.python_file_finder_pipeline({
+			file_command = { "fd", "-tf" },
+			dir_command = { "fd", "-td" },
+			filters = { "fuzzy_filter", "difflib_sorter" },
+		}),
+		wilder.cmdline_pipeline(),
+		wilder.python_search_pipeline()
+	),
+})
 
 wilder.set_option(
 	"renderer",
@@ -23,9 +23,9 @@ wilder.set_option(
 				{ a = 1 },
 				{ foreground = "#00BAFF" },
 			}),
-            border = "Normal",
+            border = "NonText",
 		},
-        border = "single",
+        border = "rounded",
 		highlighter = wilder.basic_highlighter(),
 		left = { " ", wilder.popupmenu_devicons() },
 		right = { " ", wilder.popupmenu_scrollbar() },

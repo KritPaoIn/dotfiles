@@ -274,7 +274,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-path", "cmp-nvim-lsp", "cmp_luasnip" },
+    after = { "cmp_luasnip", "cmp-path", "cmp-buffer", "cmp-nvim-lsp" },
     config = { 'require("plugins.config.nvim-cmp")' },
     load_after = {
       ["lspkind-nvim"] = true
@@ -325,6 +325,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/krit/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["omnisharp-vim"] = {
+    loaded = true,
+    path = "/Users/krit/.local/share/nvim/site/pack/packer/start/omnisharp-vim",
+    url = "https://github.com/OmniSharp/omnisharp-vim"
   },
   ["onedark.nvim"] = {
     loaded = false,
@@ -397,13 +402,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/krit/.local/share/nvim/site/pack/packer/opt/vim-airline-themes",
     url = "https://github.com/vim-airline/vim-airline-themes"
-  },
-  ["vim-better-whitespace"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/krit/.local/share/nvim/site/pack/packer/opt/vim-better-whitespace",
-    url = "https://github.com/ntpeters/vim-better-whitespace"
   },
   ["vim-closetag"] = {
     loaded = false,
@@ -516,22 +514,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require("plugins.config.nvim-tree")
-time([[Config for nvim-tree.lua]], false)
 -- Config for: tagbar
 time([[Config for tagbar]], true)
 require("plugins.config.tagbar")
 time([[Config for tagbar]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("plugins.config.treesitter")
-time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("plugins.config.nvim-tree")
+time([[Config for nvim-tree.lua]], false)
 -- Config for: wilder.nvim
 time([[Config for wilder.nvim]], true)
 require("plugins.config.wilder")
 time([[Config for wilder.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("plugins.config.treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd playground ]]
@@ -547,20 +545,20 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-closetag', 'vim-hexokinase'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-closetag', 'vim-hexokinase'}, { ft = "javascript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'vim-closetag', 'vim-hexokinase'}, { ft = "typescript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'vim-closetag', 'vim-hexokinase'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'vim-closetag', 'vim-hexokinase'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType css ++once lua require("packer.load")({'vim-hexokinase'}, { ft = "css" }, _G.packer_plugins)]]
-vim.cmd [[au FileType http ++once lua require("packer.load")({'vim-http'}, { ft = "http" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-hexokinase', 'vim-closetag'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-hexokinase', 'vim-closetag'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'vim-hexokinase', 'vim-closetag'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'vim-hexokinase', 'vim-closetag'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'vim-hexokinase', 'vim-closetag'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tmux ++once lua require("packer.load")({'vim-tmux'}, { ft = "tmux" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim', 'vim-closetag'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-closetag', 'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType http ++once lua require("packer.load")({'vim-http'}, { ft = "http" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufEnter * ++once lua require("packer.load")({'nvim-notify', 'nvim-autopairs', 'vim-sandwich', 'vim-swap', 'vim-commentary'}, { event = "BufEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'vim-highlighturl', 'vim-rooter', 'lspsaga.nvim', 'neoscroll.nvim', 'lspkind-nvim', 'open-browser.vim', 'presence.nvim', 'LuaSnip', 'vimspector', 'neoformat', 'trouble.nvim', 'vim-better-whitespace', 'fzf.vim', 'indent-blankline.nvim', 'alpha-nvim', 'asyncrun.vim', 'vim-fugitive'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'fzf.vim', 'asyncrun.vim', 'trouble.nvim', 'alpha-nvim', 'lspkind-nvim', 'lspsaga.nvim', 'vim-fugitive', 'LuaSnip', 'neoformat', 'vim-highlighturl', 'neoscroll.nvim', 'vim-rooter', 'vimspector', 'open-browser.vim', 'indent-blankline.nvim', 'presence.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufEnter * ++once lua require("packer.load")({'vim-commentary', 'vim-sandwich', 'nvim-notify', 'vim-swap', 'nvim-autopairs'}, { event = "BufEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

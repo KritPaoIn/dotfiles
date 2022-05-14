@@ -80,14 +80,31 @@ if utils.executable("pyright") then
 end
 
 if utils.executable("clangd") then
-	lspconfig.clangd.setup({
+	lspconfig.clangd.setup(coq.lsp_ensure_capabilities({
 		on_attach = attachment,
 		capabilities = capabilities,
 		filetypes = { "c", "cpp", "cc" },
 		flags = {
 			debounce_text_changes = 500,
 		},
-	})
+	}))
+end
+
+-- local omnisharp_bin = "/usr/local/bin/omnisharp"
+-- local pid = vim.fn.getpid()
+-- if utils.executable("omnisharp") then
+-- 	lspconfig.omnisharp.setup(coq.lsp_ensure_capabilities({
+-- 		on_attach = attachment,
+--         cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
+-- 		capabilities = capabilities,
+-- 	}))
+-- end
+
+if utils.executable("csharp-ls") then
+	lspconfig.csharp_ls.setup(coq.lsp_ensure_capabilities({
+		on_attach = attachment,
+		capabilities = capabilities,
+	}))
 end
 
 -- npm i -g typescript-language-server
@@ -177,6 +194,7 @@ if utils.executable("emmet-ls") then
 			"javascript.tsx",
 			"typescript.tsx",
 			"vue",
+			"svelte",
 		},
 	}))
 end
@@ -194,6 +212,7 @@ if utils.executable("vscode-eslint-language-server") then
 			"javascript.tsx",
 			"typescript.tsx",
 			"vue",
+			"svelte",
 		},
 	}))
 end
@@ -231,4 +250,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 		-- severity_limit = "Info"
 	},
 })
+
+local win = require("lspconfig.ui.windows")
+local _default_opts = win.default_opts
+
+win.default_opts = function(options)
+	local win_opts = _default_opts(options)
+	win_opts.border = "rounded"
+	return win_opts
+end
+
 return M

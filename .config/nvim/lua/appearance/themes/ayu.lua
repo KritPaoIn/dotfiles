@@ -78,10 +78,6 @@ function m.theme()
                 highlight! link LspSagaSignatureHelpTruncateLine Normal
                 highlight! link LspSagaDiagTruncateLine Normal
                 highlight! link LspSagaDefPreviewTruncateLine Normal
-                " highlight DiagnosticError guifg=#E51300
-                " highlight DiagnosticWarn guifg=#A58A00
-                " highlight DiagnosticInfo guifg=#007BD3
-                " highlight DiagnosticHint guifg=#007BD3
                 highlight Normal ctermbg=NONE guibg=NONE
                 highlight! link NvimTreeFolderName Normal
                 highlight! link NvimTreeOpenedFolderName Normal
@@ -92,6 +88,9 @@ function m.theme()
                 highlight GitGutterAdd    guifg=#4d7e00 ctermfg=2
                 highlight GitGutterChange guifg=#007fa1 ctermfg=3
                 highlight GitGutterDelete guifg=#a20011 ctermfg=1
+
+                highlight Pmenu guifg=NONE guibg=NONE
+                highlight link FloatBorder NonText
             ]])
 		end,
 		set_light_mode = function()
