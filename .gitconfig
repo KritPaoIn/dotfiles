@@ -8,3 +8,4 @@
 	clean = git-lfs clean -- %f
 [core]
 	autocrlf = input
+	editor = vim
