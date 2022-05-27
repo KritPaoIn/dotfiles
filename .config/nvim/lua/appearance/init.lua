@@ -1,15 +1,19 @@
 local theme_name = vim.g.config.theme or "ayu"
 
-local theme = require(string.format("appearance.themes.%s", theme_name))
+local succ, theme = pcall(require, string.format("appearance.themes.%s", theme_name))
+
+if not succ then
+	theme = require("appearance.themes.ayu")
+end
 
 theme.theme()
 
 if vim.g.config.bufferline and theme.bufferline then
-    theme.bufferline()
+	theme.bufferline()
 end
 
 if vim.g.config.statusline and theme.statusline then
-    theme.statusline()
+	theme.statusline()
 end
 
 if vim.g.config.gitgutter and theme.gitgutter then

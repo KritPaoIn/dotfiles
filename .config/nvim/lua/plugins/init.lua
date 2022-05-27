@@ -113,6 +113,11 @@ require("packer").startup({
 			config = [[require("plugins.config.nvim-tree")]],
 		})
 
+		use({
+			"akinsho/toggleterm.nvim",
+			config = [[require("plugins.config.toggleterm")]],
+		})
+
 		-- Ctags Explorer
 		if utils.executable("ctags") then
 			use({
