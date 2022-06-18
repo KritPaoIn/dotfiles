@@ -2,10 +2,10 @@ local previous_tag
 function _G.TagInput(is_head)
 	local tag
 	if is_head == 1 then
-		previous_tag = vim.fn.input("Tag: ")
+		previous_tag = string.gsub(vim.fn.input("Tag: "), "%s+", "")
 		tag = string.format("<%s>", previous_tag)
 	else
-		tag = string.format("</%s>", vim.fn.matchstr(previous_tag, "^\a[^[:blank:]>/]*"))
+		tag = string.format("</%s>", previous_tag)
 	end
 	return tag
 end
@@ -13,8 +13,8 @@ end
 function _G.FuncInput(is_head)
 	local func_name
 	if is_head == 1 then
-		previous_tag = vim.fn.input("Function Name: ")
-		func_name = string.format("%s(", func_name)
+		local func = vim.fn.input("Function Name: ")
+		func_name = string.format("%s(", func)
 	else
 		func_name = string.format(")")
 	end

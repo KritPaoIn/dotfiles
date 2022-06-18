@@ -13,6 +13,8 @@ alias g git
 alias md mkdir
 alias cat "bat --plain --number"
 
+set -gx BAT_THEME "ansiplus"
+
 command -qv nvim && alias vim nvim
 set -gx LANG "en_US.UTF-8"
 set -gx LC_COLLATE "en_US.UTF-8"
@@ -58,6 +60,9 @@ set -gx PATH /Applications/CMake.app/Contents/bin $PATH
 
 # Csharp
 set -gx PATH $HOME/.dotnet/tools $PATH
+
+# Ruby
+set -gx PATH /usr/local/Cellar/ruby/3.1.2/bin $PATH
 
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'

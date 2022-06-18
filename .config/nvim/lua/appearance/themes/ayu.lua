@@ -49,7 +49,7 @@ function m.theme()
 
 	local auto_dark_mode = require("auto-dark-mode")
 	auto_dark_mode.setup({
-		update_interval = 1000,
+		update_interval = 4000,
 		set_dark_mode = function()
 			vim.g.ayucolor = "dark"
 			vim.cmd("colorscheme ayu")

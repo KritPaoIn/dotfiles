@@ -3,7 +3,7 @@ local theme_name = vim.g.config.theme or "ayu"
 local succ, theme = pcall(require, string.format("appearance.themes.%s", theme_name))
 
 if not succ then
-	theme = require("appearance.themes.ayu")
+	theme = require("appearance.themes.basic")
 end
 
 theme.theme()

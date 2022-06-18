@@ -9,7 +9,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd(install_cmd)
 end
 
-vim.cmd("packadd packer.nvim")
+vim.cmd([[packadd packer.nvim]])
 
 local util = require("packer.util")
 require("packer").startup({
@@ -41,7 +41,7 @@ require("packer").startup({
 		use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 		use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 
-        use({ "OmniSharp/omnisharp-vim" })
+		use({ "OmniSharp/omnisharp-vim" })
 
 		-- LSP Configuration
 		use({
@@ -168,6 +168,10 @@ require("packer").startup({
 			"gelguy/wilder.nvim",
 			config = [[require("plugins.config.wilder")]],
 		})
+
+		if utils.executable("latex") then
+			use({ "lervag/vimtex", ft = "tex" })
+		end
 
 		-- File Fuzzy Finder
 		use({ "junegunn/fzf", run = ":call fzf#install()" })
